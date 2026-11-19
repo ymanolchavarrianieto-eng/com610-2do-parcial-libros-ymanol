@@ -1,0 +1,21 @@
+{
+  "name": "api-catalogo-libros-com610",
+  "version": "1.1.0",
+  "description": "API REST de catálogo de libros en EC2 con RDS y CI/CD - Segundo Examen Parcial COM610",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest --runInBand"
+  },
+  "author": "Chavarria Nieto Jesus Ymanol",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
