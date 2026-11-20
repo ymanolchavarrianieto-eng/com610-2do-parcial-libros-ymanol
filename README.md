@@ -7,9 +7,9 @@
 
 ## Datos del Despliegue
 
-- **URL pública de la API (EC2 + Nginx):** `http://98.88.251.81`
-- **Endpoint de estado:** `http://98.88.251.81/health`
-- **Endpoint de libros:** `http://98.88.251.81/libros`
+- **Instancia EC2 (Nginx en puerto 80):** `http://98.88.251.81`
+- **Verificación de estado (`/health`):** `http://98.88.251.81/health`
+- **Consulta de catálogo (`/libros`):** `http://98.88.251.81/libros`
 - **Ejecución exitosa de CI:** https://github.com/ymanolchavarrianieto-eng/com610-2do-parcial-libros-ymanol/actions/runs/44619247228
 - **Ejecución exitosa de CD:** https://github.com/ymanolchavarrianieto-eng/com610-2do-parcial-libros-ymanol/actions/runs/44619247294
 
@@ -34,13 +34,13 @@
 
 ## Recursos de AWS Utilizados
 
-| Recurso | Nombre / ID | Configuración aplicada |
+| Recurso | Nombre / Identificador | Detalle de configuración |
 |---|---|---|
-| **VPC** | `vpc-0fdb678415831d3af` | Misma red para EC2 y RDS |
-| **Instancia EC2** | `ec2-libros-ymanol-chavarria` | Ubuntu 24.04 LTS (`t3.micro`) - IP Pública: `98.88.251.81` |
-| **Grupo de Seguridad EC2** | `ec2-libros-ymanol-chavarria-sg` | Puerto `22 (SSH)` solo desde mi IP y puerto `80 (HTTP)` abierto a Internet |
-| **Instancia RDS** | `rds-libros-ymanol-chavarria` | MariaDB (`db.t4g.micro`), base de datos `catalogo_libros`, sin acceso público |
-| **Grupo de Seguridad RDS** | `rds-libros-ymanol-chavarria-sg` | Puerto `3306` permitido solo desde el grupo de seguridad de EC2 |
+| **VPC** | `vpc-0fdb678415831d3af` | Red virtual compartida para EC2 y RDS |
+| **Instancia EC2** | `ec2-libros-ymanol-chavarria` | Ubuntu Server 24.04 LTS (`t3.micro`) - IP Pública: `98.88.251.81` |
+| **Grupo de Seguridad EC2** | `ec2-libros-ymanol-chavarria-sg` | Entrada `SSH (22)` desde mi IP pública y `HTTP (80)` desde `0.0.0.0/0` |
+| **Instancia RDS** | `rds-libros-ymanol-chavarria` | MariaDB (`db.t4g.micro`), base `catalogo_libros`, acceso público deshabilitado |
+| **Grupo de Seguridad RDS** | `rds-libros-ymanol-chavarria-sg` | Entrada `3306` permitida únicamente desde `ec2-libros-ymanol-chavarria-sg` |
 
 ---
 
